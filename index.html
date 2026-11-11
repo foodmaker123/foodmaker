@@ -37,6 +37,40 @@
 @media(max-width:800px){.container{width:min(100% - 36px,650px)}.announcement{font-size:11px}.nav{min-height:66px}.brand{font-size:20px}.hamburger{display:inline-flex}.nav-links{display:none;position:absolute;left:18px;right:18px;top:calc(100% + 1px);flex-direction:column;align-items:stretch;gap:4px;background:#052f1d;padding:15px;border:1px solid #ffffff2a;border-radius:0 0 20px 20px;box-shadow:0 22px 35px #0005}.nav-links.open{display:flex}.nav-links>a:not(.btn){padding:11px 13px}.nav-links .btn{width:100%}.section{padding:70px 0}.hero-grid,.problem-grid,.inside-layout,.audience-layout,.offer-layout{grid-template-columns:1fr}.hero-grid{padding:54px 0 60px}.hero-art{min-height:470px}.meal-photo{width:75%;right:7%}.book-mockup{left:8%;bottom:2%}.floating-stamp{right:7%;bottom:7%}.proof-row{grid-template-columns:repeat(2,1fr)}.proof-item:nth-child(2){border-right:0}.proof-item:nth-child(-n+2){border-bottom:1px solid #d6e4d5}.step-grid{grid-template-columns:1fr}.food-grid{grid-template-columns:repeat(2,1fr)}.food-grid .food-card:last-child{grid-column:1/-1}.benefits-grid{grid-template-columns:repeat(2,1fr)}.problem-photo{min-height:400px;order:2}.problem-grid .problem-copy{order:1}.footer-grid{grid-template-columns:1fr 1fr}.footer-about{grid-column:1/-1}.mobile-buy{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:30;align-items:center;justify-content:space-between;background:#07341f;color:#fff;padding:11px 12px 11px 16px;border:1px solid #baff7d77;border-radius:18px;box-shadow:0 8px 40px #0007;gap:10px}.mobile-buy.show{display:flex}.mobile-buy b{display:block;font-size:13px;line-height:1.2}.mobile-buy small{font-size:11px;color:#b9d8c3;display:block}.mobile-buy .btn{font-size:12px;min-height:40px;padding:10px 14px;white-space:nowrap}}
 @media(max-width:560px){h1{font-size:clamp(42px,11vw,59px)}h2{font-size:clamp(32px,9vw,43px)}.hero-copy>p{font-size:17px}.hero-cta .btn{width:100%}.hero-art{min-height:390px}.meal-photo{width:90%;right:0}.book-mockup{width:170px;bottom:0;left:0;padding:11px}.book-mockup .book-title{font-size:17px}.book-cover-photo{min-height:100px}.book-band{font-size:7px}.floating-stamp{width:95px;height:95px;right:0;bottom:6%}.floating-stamp strong{font-size:25px}.floating-stamp small{font-size:8px}.proof-row{gap:0}.proof-item{gap:8px;padding:16px 6px}.proof-icon{min-width:36px;height:36px;font-size:19px}.proof-item b{font-size:12px}.proof-item small{font-size:10px}.problem-photo{min-height:340px}.food-grid{grid-template-columns:1fr}.food-grid .food-card:last-child{grid-column:auto}.food-pic{height:250px}.benefits-grid{grid-template-columns:1fr 1fr;gap:9px}.benefit{padding:18px}.benefit h3{font-size:15px}.benefit p{font-size:12px}.step{padding:25px}.doc-preview{padding:10px}.tabs{gap:1px}.tab{padding:9px;font-size:11px}.page-sheet{padding:23px 18px;min-height:405px}.page-sheet:after{left:18px;font-size:7px}.page-sheet h3{font-size:21px}.sheet-toc li,.sheet-table,.sheet-check li{font-size:11px}.sheet-check{columns:1}.offer-card{padding:27px 23px}.footer-grid{grid-template-columns:1fr}.footer-about{grid-column:auto}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+
+/* Koszyk pojedynczego e-booka; płatność wyłącznie przez Naffy */
+.cart-trigger{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #ffffff77;background:#ffffff13;color:#fff;border-radius:100px;padding:9px 15px;min-height:42px;font-weight:800;font-size:13px;white-space:nowrap;transition:background .2s}
+.cart-trigger:hover{background:#ffffff2b}
+.cart-count{border-radius:30px;min-width:21px;height:21px;padding:0 5px;background:#baff7d;color:#06351e;display:inline-grid;place-items:center;font-size:11px}
+.cart-layer[hidden],.cart-filled[hidden],.cart-empty[hidden]{display:none!important}
+.cart-layer{position:fixed;inset:0;z-index:100;display:flex;justify-content:flex-end}
+.cart-backdrop{position:absolute;inset:0;border:0;background:#00190eb8;cursor:pointer}
+.cart-panel{position:relative;display:flex;flex-direction:column;max-width:100%;width:min(470px,100%);height:100%;background:#fcfdf9;color:#123524;padding:29px 26px 22px;box-shadow:-15px 0 55px #001b125e;overflow-y:auto}
+.cart-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #dce9d9;padding-bottom:20px}
+.cart-heading h2{font-size:28px;margin:0}
+.cart-close{border:0;border-radius:50%;width:42px;height:42px;background:#e8f2e5;color:#143b25;font-weight:900;font-size:23px}
+.cart-items{flex:1;padding:25px 0}
+.cart-product{display:grid;grid-template-columns:90px 1fr;gap:18px;align-items:start}
+.cart-thumb{height:116px;border-radius:12px;background:linear-gradient(150deg,#094e2c,#d3f5b3);color:white;padding:12px 9px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;box-shadow:0 5px 12px #12452a24}
+.cart-thumb strong{font-size:12px;line-height:1.1;letter-spacing:-.03em}
+.cart-thumb small{font-size:10px}
+.cart-product h3{font-size:18px;letter-spacing:-.02em;margin:0 0 5px}
+.cart-product p{font-size:13px;margin:0 0 8px}
+.cart-product b{font-size:21px}
+.cart-remove{display:inline-block;padding:6px 0;border:0;background:none;color:#52785c;text-decoration:underline;font-size:13px}
+.cart-empty{padding:50px 16px;text-align:center}
+.cart-empty .empty-symbol{font-size:50px;margin-bottom:14px}
+.cart-empty h3{font-size:21px}
+.cart-summary{border-top:1px solid #dce9d9;padding-top:20px;margin-top:auto}
+.cart-total{display:flex;justify-content:space-between;gap:15px;align-items:center;font-size:16px;font-weight:800;margin-bottom:16px}
+.cart-total strong{font-size:28px}
+.cart-pay{width:100%;text-align:center}
+.cart-meta{font-size:12px;color:#58705e;line-height:1.5;margin:15px 0 0}
+.cart-choice{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.cart-secondary{display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #739a73;color:#17502e;border-radius:100px;padding:13px 20px;min-height:56px;font-size:15px;font-weight:800;cursor:pointer}
+.cart-secondary:hover{background:#f0f8e9}
+body.cart-open{overflow:hidden}
+@media(max-width:800px){.nav-links .cart-trigger{width:100%}.cart-panel{padding:22px 18px 18px}.cart-heading h2{font-size:25px}}
 </style>
 </head>
 <body>
@@ -48,6 +82,7 @@
   <button class="hamburger" id="menu-btn" type="button" aria-controls="menu" aria-expanded="false" aria-label="Otwórz menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg> Menu</button>
   <div class="nav-links" id="menu">
    <a href="#jak-dziala">Jak to działa</a><a href="#w-srodku">Co w środku</a><a href="#przepisy">Posiłki</a><a href="#faq">FAQ</a>
+   <button type="button" class="cart-trigger" data-open-cart aria-haspopup="dialog" aria-controls="cart-dialog" aria-label="Otwórz koszyk">🛒 Koszyk <span class="cart-count" data-cart-count>0</span></button>
    <a class="btn" href="#oferta">Zobacz ofertę <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a>
   </div>
  </nav>
@@ -175,7 +210,7 @@
   <div class="offer-copy reveal"><div class="eyebrow">Twój praktyczny plan</div><h2>Dwa tygodnie gotowych decyzji w jednym e-booku.</h2><p>Nie musisz szukać osobno jadłospisu, przepisów i list zakupów. Wszystko masz uporządkowane w jednym pliku.</p>
    <ul><li>48 stron praktycznej wiedzy</li><li>14 dni i 42 zaplanowane posiłki</li><li>24 przepisy krok po kroku</li><li>Listy zakupów na każdy tydzień</li><li>Plan awaryjny i arkusze do druku</li></ul>
   </div>
-  <div class="offer-card reveal"><span class="offer-label">Wydanie drugie · PDF</span><h3>Zdrowa dieta dla zapracowanych</h3><p>Jedna publikacja. Jeden gotowy plan.</p><div class="price">29,99<small>zł</small></div><div class="price-sub">Jednorazowy zakup — bez subskrypcji</div><button class="btn" id="buy" type="button">Kup teraz — 29,99 zł <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button><div class="checkout-warning">Obecnie wersja demonstracyjna — płatność i dostarczenie PDF wymagają podłączenia koszyka.</div><div class="offer-foot">📱 Możliwość czytania na telefonie, tablecie i komputerze.<br>🛡️ Pełny PDF będzie udostępniany wyłącznie przez platformę sprzedażową.</div></div>
+  <div class="offer-card reveal"><span class="offer-label">Wydanie drugie · PDF</span><h3>Zdrowa dieta dla zapracowanych</h3><p>Jedna publikacja. Jeden gotowy plan.</p><div class="price">29,99<small>zł</small></div><div class="price-sub">Jednorazowy zakup — bez subskrypcji</div><a class="btn" id="buy" href="https://www.naffy.io/przemek-lampa/zdrowadieta-krx" rel="noopener">Kup teraz — przejdź do Naffy <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a><div class="cart-choice"><button class="cart-secondary" id="add-to-cart" type="button">🛒 Dodaj do koszyka</button></div><div class="checkout-warning">Płatność następuje na stronie Naffy. Przed opłaceniem sprawdź cenę i warunki wyświetlane w koszyku Naffy.</div><div class="offer-foot">📱 Możliwość czytania na telefonie, tablecie i komputerze.<br>🛡️ Płatności i dostarczenie pełnego pliku obsługuje zewnętrzna platforma Naffy.</div></div>
  </div></section>
 
  <section class="section" id="faq"><div class="container faq-wrap"><div class="section-head reveal"><div class="eyebrow">Pytania i odpowiedzi</div><h2>Wszystko, co warto wiedzieć przed zakupem.</h2></div>
@@ -184,7 +219,7 @@
   <details class="reveal"><summary>Czy mogę czytać go na telefonie?</summary><p>Tak. PDF można otworzyć na telefonie, tablecie lub komputerze za pomocą czytnika PDF lub przeglądarki.</p></details>
   <details class="reveal"><summary>Czy przepisy są dla początkujących?</summary><p>Poradnik zawiera instrukcje krok po kroku, czasy przygotowania, składniki i wskazówki organizacyjne. Nie wymaga specjalistycznego sprzętu.</p></details>
   <details class="reveal"><summary>Czy to plan na odchudzanie?</summary><p>Nie. To system organizacji posiłków, a nie indywidualny jadłospis redukcyjny ani dietoterapia. Porcje możesz dostosować do własnego apetytu i potrzeb.</p></details>
-  <details class="reveal"><summary>Jak dostanę e-book po zakupie?</summary><p>Sposób dostarczenia zostanie podany po skonfigurowaniu platformy sprzedażowej. Obecnie przycisk zakupu działa wyłącznie demonstracyjnie.</p></details>
+  <details class="reveal"><summary>Jak dostanę e-book po zakupie?</summary><p>Zakup jest realizowany na Naffy. Po skutecznej płatności Naffy automatycznie dostarcza produkt cyfrowy na e-mail podany podczas zamówienia, jeżeli plik e-booka i płatności są prawidłowo skonfigurowane w panelu sprzedawcy.</p></details>
   <details class="reveal"><summary>Czy mogę odstąpić od umowy?</summary><p>Uprawnienia konsumenta dotyczące treści cyfrowych opisuje <a href="/prawa-konsumenta.html" style="color:#207448;text-decoration:underline">strona z informacjami o prawach konsumenta</a>. Dokument jest jeszcze projektem i wymaga uzupełnienia przed sprzedażą.</p></details>
  </div></div></section>
 </main>
@@ -194,7 +229,7 @@
  <div><h3>Informacje prawne</h3><a href="/regulamin.html">Regulamin (projekt)</a><a href="/polityka-prywatnosci.html">Polityka prywatności (projekt)</a><a href="/prawa-konsumenta.html">Prawa konsumenta (projekt)</a><small>Sprzedawca i kontakt: [do uzupełnienia]</small></div>
  </div><div class="footer-bottom"><small>ZdrowaDieta · Publikacja cyfrowa PDF · Przed uruchomieniem sprzedaży uzupełnij dane sprzedawcy i dokumenty.</small></div></div></footer>
 <div class="mobile-buy" id="mobile-buy" aria-label="Szybkie przejście do oferty"><div><b>Plan na 14 dni</b><small>E-book · 29,99 zł</small></div><a class="btn" href="#oferta">Zobacz ofertę →</a></div>
-<div class="toast" id="toast" role="status" aria-live="polite">Sprzedaż nie została jeszcze uruchomiona. Przed zakupem potrzebne jest podłączenie platformy płatniczej i dostarczania PDF.<button type="button" id="close-toast" aria-label="Zamknij komunikat">×</button></div>
+<div class="cart-layer" id="cart-layer" hidden><button type="button" class="cart-backdrop" id="cart-backdrop" aria-label="Zamknij koszyk"></button><aside class="cart-panel" id="cart-dialog" role="dialog" aria-modal="true" aria-labelledby="cart-title" tabindex="-1"><div class="cart-heading"><div><div class="eyebrow">ZdrowaDieta</div><h2 id="cart-title">Twój koszyk</h2></div><button type="button" class="cart-close" id="cart-close" aria-label="Zamknij koszyk">×</button></div><div class="cart-items"><div class="cart-empty" id="cart-empty"><div class="empty-symbol">🛍️</div><h3>Twój koszyk jest pusty</h3><p>Dodaj e-booka z sekcji oferty, aby przejść do zakupu.</p><button type="button" class="cart-secondary" id="cart-browse">Wróć do oferty</button></div><div class="cart-filled" id="cart-filled" hidden><div class="cart-product"><div class="cart-thumb" aria-hidden="true"><strong>ZDROWA DIETA<br>DLA ZAPRACOWANYCH</strong><small>14 DNI · 42 POSIŁKI</small></div><div><h3>Zdrowa dieta dla zapracowanych</h3><p>E-book PDF · wydanie drugie · 1 szt.</p><b>29,99 zł</b><div><button class="cart-remove" id="cart-remove" type="button">Usuń z koszyka</button></div></div></div></div></div><div class="cart-summary" id="cart-summary" hidden><div class="cart-total"><span>Razem</span><strong>29,99 zł</strong></div><a class="btn cart-pay" href="https://www.naffy.io/przemek-lampa/zdrowadieta-krx" rel="noopener">Przejdź do płatności w Naffy →</a><p class="cart-meta">Zostaniesz przeniesiony na zewnętrzną stronę Naffy, gdzie podasz e-mail i wybierzesz metodę płatności. Ostateczna cena i warunki transakcji są podane w Naffy.</p></div></aside></div>
 <script>
 (function(){
  const url=new URL(location.href); let changed=false;for(const key of [...url.searchParams.keys()]){if(/^utm_/i.test(key)){url.searchParams.delete(key);changed=true}}if(changed)history.replaceState(history.state,"",url.pathname+url.search+url.hash);
@@ -222,11 +257,51 @@
  function updateBar(){const small=innerWidth<=800,notHero=hero.getBoundingClientRect().bottom<100,offerRect=offer.getBoundingClientRect(),nearOffer=offerRect.top<innerHeight*.85&&offerRect.bottom>0,nearFooter=footer.getBoundingClientRect().top<innerHeight;bar.classList.toggle("show",small&&notHero&&!nearOffer&&!nearFooter)}
  addEventListener("scroll",updateBar,{passive:true});addEventListener("resize",()=>{closeMenu();updateBar()},{passive:true});updateBar();
  if(!reduced.matches&&"IntersectionObserver" in window){const els=[...document.querySelectorAll(".reveal")];document.documentElement.classList.add("motion");const io=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");io.unobserve(entry.target)}})},{threshold:.05,rootMargin:"0px 0px 50px 0px"});els.forEach(el=>io.observe(el))}
- // Uzupełnij wyłącznie prawdziwym linkiem do płatności w Naffy/Easycart.
- const CHECKOUT_URL="";
- const buy=document.getElementById("buy"),toast=document.getElementById("toast");
- buy.addEventListener("click",()=>{if(/^https:\/\/[^ ]+$/i.test(CHECKOUT_URL)){location.assign(CHECKOUT_URL)}else{toast.classList.add("show")}});
- document.getElementById("close-toast").addEventListener("click",()=>toast.classList.remove("show"));
+ // Koszyk dla jednego produktu; rzeczywistą płatność i dostawę obsługuje Naffy.
+ const layer=document.getElementById("cart-layer");
+ const dialog=document.getElementById("cart-dialog");
+ const cartFilled=document.getElementById("cart-filled");
+ const cartEmpty=document.getElementById("cart-empty");
+ const cartSummary=document.getElementById("cart-summary");
+ const counter=document.querySelectorAll("[data-cart-count]");
+ let hasProduct=false;
+ let previousFocus=null;
+ function updateCart(){
+   cartFilled.hidden=!hasProduct;
+   cartEmpty.hidden=hasProduct;
+   cartSummary.hidden=!hasProduct;
+   counter.forEach(el=>{el.textContent=hasProduct?"1":"0"});
+ }
+ function openCart(){
+   previousFocus=document.activeElement;
+   layer.hidden=false;
+   document.body.classList.add("cart-open");
+   updateCart();
+   document.getElementById("cart-close").focus();
+ }
+ function closeCart(){
+   layer.hidden=true;
+   document.body.classList.remove("cart-open");
+   if(previousFocus&&typeof previousFocus.focus==="function")previousFocus.focus();
+ }
+ document.querySelectorAll("[data-open-cart]").forEach(el=>el.addEventListener("click",openCart));
+ document.getElementById("add-to-cart").addEventListener("click",()=>{hasProduct=true;openCart()});
+ document.getElementById("cart-remove").addEventListener("click",()=>{hasProduct=false;updateCart();document.getElementById("cart-browse").focus()});
+ document.getElementById("cart-close").addEventListener("click",closeCart);
+ document.getElementById("cart-backdrop").addEventListener("click",closeCart);
+ document.getElementById("cart-browse").addEventListener("click",()=>{closeCart();document.getElementById("oferta").scrollIntoView({behavior:reduced.matches?"instant":"smooth",block:"start"})});
+ document.addEventListener("keydown",event=>{
+   if(layer.hidden)return;
+   if(event.key==="Escape"){event.preventDefault();closeCart();return}
+   if(event.key==="Tab"){
+     const focusable=[...dialog.querySelectorAll('a[href],button:not([disabled])')].filter(el=>el.getClientRects().length>0);
+     if(!focusable.length)return;
+     const first=focusable[0],last=focusable[focusable.length-1];
+     if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}
+     else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
+   }
+ });
+ updateCart();
 })();
 </script>
 </body></html>
