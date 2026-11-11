@@ -1,16 +1,43 @@
-# Zdrowa dieta dla zapracowanych
+# ZdrowaDieta — strona sprzedażowa e-booka
 
-Strona sprzedażowa jednego e-booka PDF. Kod: `index.html`. Działa bez instalowania zależności.
+Responsywny, statyczny landing page dla e-booka **„Zdrowa dieta dla zapracowanych” (wydanie drugie, 2026)**.
 
-## Podgląd i publikacja
+## Publikacja
 
-Otwórz `index.html` w przeglądarce lub połącz repozytorium z Netlify (gałąź `main`, katalog publikacji `.`, bez komendy budowania).
+Strona działa bez Node.js i procesu budowania. Repozytorium jest podłączone do Cloudflare Pages:
+
+- Projekt Pages: `foodmaker`
+- Gałąź produkcyjna: `main`
+- Publikacja: automatyczna po commitach na `main`, jeśli integracja Cloudflare jest aktywna
+- Adres docelowy: https://zdrowadieta.shop/
+- Adres techniczny Pages: https://foodmaker-52h.pages.dev/
+
+## Struktura
+
+- `index.html` — strona główna (HTML, CSS, JavaScript)
+- `favicon.svg` — ikona strony
+- `regulamin.html`, `polityka-prywatnosci.html`, `prawa-konsumenta.html` — projekty dokumentów prawnych z polami do uzupełnienia
+
+## Zawartość
+
+- Duża sekcja hero z fotografią potrawy i stylizowanym mockupem okładki
+- Kroki korzystania z e-booka, autentyczne informacje o zawartości PDF
+- Interaktywny podgląd fragmentu spisu treści, jadłospisu i listy zakupów
+- Zdjęcia ilustracyjne posiłków (Unsplash, ładowane z serwera Unsplash; NIE są to zdjęcia rzeczywistych przepisów z PDF)
+- FAQ, czytelna oferta i mobilny pasek CTA
+- Animacje respektujące ustawienie `prefers-reduced-motion`
 
 ## Przed uruchomieniem sprzedaży
 
-- W `index.html` wpisz cenę i uzupełnij zmienną `CHECKOUT_URL` prawdziwym adresem koszyka Naffy/Easycart.
-- Skonfiguruj na platformie sprzedażowej płatność i automatyczne dostarczanie pełnego PDF. Nie umieszczaj płatnego pliku w tym publicznym repozytorium.
-- Uzupełnij dane sprzedawcy, kontakt, regulamin, politykę prywatności i prawa konsumenta.
-- Wykonaj test zakupu i dostawy pliku przed udostępnieniem oferty klientom.
+1. Cena widoczna na stronie to **29,99 zł**. Upewnij się, że cena w koszyku jest identyczna.
+2. W końcowym skrypcie `index.html` ustaw `const CHECKOUT_URL = "";` na prawdziwy URL koszyka Naffy/Easycart. Obecnie zakup jest tylko wersją demonstracyjną.
+3. Pełny, płatny PDF wgraj WYŁĄCZNIE do platformy sprzedażowej. Nie publikuj PDF w repozytorium ani statycznych plikach hostingu.
+4. Uzupełnij prawdziwe dane sprzedawcy i dokumenty prawne, następnie sprawdź ich zgodność z koszykiem i obowiązującymi przepisami.
+5. Wykonaj test płatności i automatycznego dostarczania e-booka.
+6. Sprawdź dostępność mobilną, szybkość ładowania zdjęć zewnętrznych i działanie HTTPS na żywej domenie.
 
-Obecnie to wersja demonstracyjna bez aktywnej płatności. Strona na GitHubie jest uproszczoną samodzielną wersją landing page; nie zawiera pełnego zestawu grafik z osobnej paczki ZIP.
+## Lokalny podgląd
+
+Otwórz `index.html` w przeglądarce. Zdjęcia z Unsplash wymagają połączenia z internetem.
+
+> Stylizowany mockup w hero odzwierciedla treść i kolorystykę e-booka, ale nie jest bitmapową kopią oryginalnej okładki PDF.
