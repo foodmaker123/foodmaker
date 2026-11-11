@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 590" role="img" aria-labelledby="t d">
+<title id="t">Zdrowa dieta dla zapracowanych</title><desc id="d">Kremowa okładka poradnika z ciemnozieloną typografią i kolorową ilustracją miski zdrowego jedzenia.</desc>
+<defs><linearGradient id="cream" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#FFFDF7"/><stop offset="1" stop-color="#F0F1E6"/></linearGradient><linearGradient id="plate" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#FCFFF4"/><stop offset="1" stop-color="#E6E8D6"/></linearGradient><clipPath id="bowl"><circle cx="210" cy="417" r="116"/></clipPath><filter id="shadow" x="-25%" y="-25%" width="150%" height="160%"><feDropShadow dx="0" dy="11" stdDeviation="10" flood-color="#163E29" flood-opacity=".15"/></filter></defs>
+<rect width="420" height="590" rx="10" fill="url(#cream)"/>
+<rect x="17" y="17" width="386" height="556" rx="4" fill="none" stroke="#D8E2D1" stroke-width="1.5"/>
+<g fill="#0B3B29"><path d="M34 39h13v4H34z"/><text x="55" y="47" font-size="15" letter-spacing="3.5" font-family="Arial,sans-serif" font-weight="700">ZDROWADIETA</text></g>
+<line x1="34" y1="66" x2="386" y2="66" stroke="#D6E1D4" stroke-width="1.5"/>
+<g fill="#0A3C28" font-family="Arial,Helvetica,sans-serif" font-weight="800" letter-spacing="-1.2"><text x="34" y="129" font-size="51">ZDROWA</text><text x="34" y="181" font-size="51">DIETA</text><text x="36" y="220" font-size="26">DLA ZAPRACOWANYCH</text></g>
+<text x="36" y="248" fill="#53805A" font-family="Arial,sans-serif" font-weight="600" letter-spacing="2" font-size="13">JEDZ DOBRZE. ŻYJ PROŚCIEJ.</text>
+<circle cx="210" cy="417" r="139" fill="#DDE8D2" opacity=".48"/>
+<circle cx="210" cy="417" r="122" fill="url(#plate)" stroke="#12452D" stroke-width="5" filter="url(#shadow)"/>
+<g clip-path="url(#bowl)">
+<rect x="90" y="296" width="240" height="240" fill="#E6E8CB"/>
+<path d="M86 373q45-78 103-50t-13 118q-23 27-67 21Z" fill="#348047"/>
+<path d="M104 354q20-46 46-39t-3 74q-15 19-42 20Z" fill="#5BAC5C"/>
+<path d="M177 306q52 8 61 56t-40 72q-48-2-51-60Z" fill="#30693A"/>
+<path d="M242 304q77 1 88 68t-75 93q-44-35-31-93Z" fill="#7AAD49"/>
+<path d="M108 445q35-23 72 0t44 89H96Z" fill="#69A747"/>
+<path d="M226 440q58-33 99 9l23 90H198Z" fill="#2E6C3D"/>
+<ellipse cx="245" cy="366" rx="48" ry="33" fill="#F9C16C" transform="rotate(22 245 366)"/>
+<path d="M217 367q23-25 59 4M223 378q26-25 54 4" stroke="#CE7945" stroke-width="6" stroke-linecap="round" fill="none" transform="rotate(15 245 366)"/>
+<circle cx="173" cy="417" r="44" fill="#D94E37" stroke="#F38F69" stroke-width="6"/>
+<circle cx="173" cy="417" r="31" fill="#F77E5B"/>
+<path d="M173 390v54M147 417h52M155 398l36 38M190 398l-35 38" stroke="#F9C4A1" stroke-width="5"/>
+<ellipse cx="280" cy="466" rx="44" ry="30" fill="#F9E8AE" transform="rotate(-18 280 466)"/>
+<ellipse cx="280" cy="466" rx="23" ry="18" fill="#E5AF52" transform="rotate(-18 280 466)"/>
+<g fill="#F4C771"><circle cx="141" cy="494" r="9"/><circle cx="161" cy="489" r="9"/><circle cx="178" cy="501" r="9"/><circle cx="311" cy="408" r="9"/><circle cx="295" cy="415" r="8"/><circle cx="315" cy="427" r="7"/></g>
+<g fill="#E7F0D1"><ellipse cx="244" cy="501" rx="7" ry="19" transform="rotate(-37 244 501)"/><ellipse cx="268" cy="513" rx="7" ry="20" transform="rotate(-37 268 513)"/></g>
+</g>
+<circle cx="210" cy="417" r="116" fill="none" stroke="#FAFCF2" stroke-width="9"/>
+<g font-family="Arial,sans-serif" fill="#0D3D2A" font-weight="750"><text x="36" y="556" font-size="13" letter-spacing=".5">14 DNI</text><circle cx="108" cy="551" r="2.5"/><text x="126" y="556" font-size="13" letter-spacing=".5">42 POSIŁKI</text><circle cx="249" cy="551" r="2.5"/><text x="267" y="556" font-size="13" letter-spacing=".5">24 PRZEPISY</text></g>
+</svg>
