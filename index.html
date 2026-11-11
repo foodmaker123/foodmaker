@@ -95,6 +95,37 @@ body.cart-open{overflow:hidden}
 @media(max-width:800px){.nav-links .cart-trigger{width:100%}.cart-heading{padding:25px 20px 21px}.cart-items{padding:18px 20px 20px}.cart-summary{padding:19px 20px calc(20px + env(safe-area-inset-bottom,0px))}.cart-stepper{padding:17px 20px 8px}}
 @media(max-width:410px){.cart-panel{width:100%}.cart-product{grid-template-columns:93px minmax(0,1fr);gap:12px;padding:12px}.cart-thumb{width:93px}.cart-product h3{font-size:16px}.cart-product p{font-size:11px}.cart-price-row b{font-size:20px}.cart-remove{font-size:11px}.cart-stepper{font-size:11px;gap:7px}.cart-heading h2{font-size:30px}}
 @media(prefers-reduced-motion:reduce){.cart-close{transition:none}}
+
+/* Nowa stopka: czytelna na komputerze i telefonie */
+.footer{background:radial-gradient(ellipse at 92% 93%,#1a5b3b 0,transparent 35%),linear-gradient(132deg,#062a1b,#04291b 60%,#093b28);padding:0 0 25px;color:#eff8ee;overflow:hidden}
+.footer>.container{position:relative}
+.footer-feature{position:relative;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:190px;padding:34px 43px;margin:0 0 56px;transform:translateY(0);background:linear-gradient(115deg,#e6f5d9 0%,#d5f4bb 54%,#bcef87 100%);border-radius:0 0 25px 25px;color:#103a25;overflow:hidden;box-shadow:0 19px 47px #001a101f}
+.footer-feature-copy{position:relative;z-index:2;max-width:660px}
+.footer-feature-tag{display:inline-block;font-size:11px;letter-spacing:.14em;font-weight:900;color:#286b3f;margin-bottom:11px}
+.footer-feature h2{margin:0 0 9px;font-size:clamp(24px,3vw,34px);max-width:650px;line-height:1.12;letter-spacing:-.04em;color:#123f29;text-wrap:balance}
+.footer-feature p{margin:0;max-width:490px;color:#416447;font-size:14px}
+.footer-feature-btn{position:relative;z-index:2;flex:none;white-space:nowrap;box-shadow:0 12px 28px #05401e30}
+.footer-feature-art{position:absolute;width:210px;height:210px;right:160px;bottom:-70px;color:#2b8249;opacity:.58;pointer-events:none}
+.footer-feature-art svg{width:100%;height:100%}
+.footer-grid-new{display:grid;grid-template-columns:1.5fr .9fr 1.15fr .9fr;gap:30px 34px;align-items:start;margin-bottom:52px}
+.footer .brand.footer-brand{font-size:25px;color:#fff;letter-spacing:-.055em}
+.footer-brand svg{flex:none}
+.footer-brand span{color:#baff7d}
+.footer-about p{max-width:315px;color:#b6d0bf;font-size:14px;line-height:1.7;margin:17px 0}
+.footer-trust{display:inline-flex;gap:8px;align-items:center;border:1px solid #9dd89039;background:#ffffff0a;color:#c8eac6;border-radius:99px;padding:7px 12px;font-size:11px;font-weight:750}
+.footer .footer-column h3{color:#f7fff3;font-size:14px;letter-spacing:.02em;margin:8px 0 19px;font-weight:850}
+.footer .footer-column a{display:block;width:fit-content;max-width:100%;font-size:13px;color:#bed6c6;text-decoration:none;line-height:1.5;margin:0 0 15px;transition:color .2s,transform .2s;overflow-wrap:anywhere}
+.footer .footer-column a:hover{color:#baff7d;transform:translateX(3px)}
+.footer .footer-column .footer-email{color:#c7ffad;font-weight:750;text-decoration:underline;text-decoration-color:#baff7d66;text-underline-offset:4px}
+.footer .footer-column .footer-team{font-weight:800;color:#f1fff0;font-size:16px;margin:0 0 8px;line-height:1.5}
+.footer .footer-column .footer-contact-note{font-size:12px;color:#9fbaa9;margin:12px 0 0;line-height:1.6}
+.footer-bottom-new{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px 32px;padding:22px 0 2px;margin:0;border-top:1px solid #c0ebc426}
+.footer-bottom-new small{font-size:12px;color:#a9c4b1;line-height:1.5}
+@media(max-width:1050px){.footer-grid-new{grid-template-columns:1.3fr 1fr;gap:34px}.footer-feature{gap:25px}.footer-feature-art{right:70px}}
+@media(max-width:800px){.footer-feature{padding:30px 27px;min-height:0;gap:18px;margin-bottom:46px}.footer-feature-art{right:2px;bottom:-68px;opacity:.28}.footer-grid-new{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}.footer .footer-column h3{margin-top:0}}
+@media(max-width:560px){.footer-feature{display:block;padding:30px 23px 25px;border-radius:0 0 21px 21px;margin-bottom:42px}.footer-feature h2{font-size:27px;max-width:300px}.footer-feature p{font-size:13px}.footer-feature-btn{margin-top:22px;min-height:48px;padding:12px 20px;font-size:14px}.footer-feature-art{right:-50px;bottom:-75px;opacity:.26}.footer-grid-new{grid-template-columns:1fr 1fr;gap:31px 18px;margin-bottom:38px}.footer-about{grid-column:1/-1}.footer .brand.footer-brand{font-size:23px}.footer-about p{margin:13px 0}.footer .footer-column h3{font-size:13px;margin-bottom:14px}.footer .footer-column a{font-size:12px;margin-bottom:12px}.footer .footer-column .footer-team{font-size:14px}.footer .footer-column .footer-email{font-size:12px;overflow-wrap:anywhere}.footer .footer-column .footer-contact-note{font-size:11px}.footer-bottom-new{display:block}.footer-bottom-new small{display:block;font-size:11px;margin-bottom:6px}}
+@media(prefers-reduced-motion:reduce){.footer .footer-column a{transition:none}}
+
 </style>
 </head>
 <body>
@@ -243,11 +274,49 @@ body.cart-open{overflow:hidden}
   <details class="reveal"><summary>Czy mogę odstąpić od umowy?</summary><p>Uprawnienia konsumenta dotyczące treści cyfrowych opisuje <a href="/prawa-konsumenta.html" style="color:#207448;text-decoration:underline">strona z informacjami o prawach konsumenta</a>. Dokument jest jeszcze projektem i wymaga uzupełnienia przed sprzedażą.</p></details>
  </div></div></section>
 </main>
-<footer class="footer"><div class="container"><div class="footer-grid">
- <div class="footer-about"><a class="brand" href="#"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#baff7d"/><path d="M9 27C7 14 20 8 31 9c0 13-10 25-22 18Z" fill="#146b3b"/></svg>Zdrowa<span>Dieta</span></a><p>Praktyczny poradnik pomagający zaplanować codzienne jedzenie bez niepotrzebnych komplikacji.</p></div>
- <div><h3>Na skróty</h3><a href="#jak-dziala">Jak to działa</a><a href="#w-srodku">Zawartość e-booka</a><a href="#oferta">Cena i oferta</a><a href="#faq">FAQ</a></div>
- <div><h3>Informacje prawne</h3><a href="/regulamin.html">Regulamin (projekt)</a><a href="/polityka-prywatnosci.html">Polityka prywatności (projekt)</a><a href="/prawa-konsumenta.html">Prawa konsumenta (projekt)</a><small>Sprzedawca i kontakt: [do uzupełnienia]</small></div>
- </div><div class="footer-bottom"><small>ZdrowaDieta · Publikacja cyfrowa PDF · Przed uruchomieniem sprzedaży uzupełnij dane sprzedawcy i dokumenty.</small></div></div></footer>
+<footer class="footer" id="kontakt">
+ <div class="container">
+  <div class="footer-feature">
+   <div class="footer-feature-copy">
+    <span class="footer-feature-tag">ZDROWADIETA • PRAKTYCZNIE</span>
+    <h2>Zdrowsze jedzenie zaczyna się od prostego planu.</h2>
+    <p>Odkryj przepisy, pomysły na posiłki i organizację zakupów w jednym miejscu.</p>
+   </div>
+   <a class="btn btn-dark footer-feature-btn" href="#oferta" aria-label="Poznaj e-book Zdrowa dieta dla zapracowanych">Poznaj e-book <span aria-hidden="true">↗</span></a>
+   <div class="footer-feature-art" aria-hidden="true"><svg viewBox="0 0 160 160" fill="none"><circle cx="80" cy="80" r="65" stroke="currentColor" stroke-width="1.4" opacity=".22"/><circle cx="80" cy="80" r="48" stroke="currentColor" stroke-width="1.4" opacity=".3"/><path d="M51 103c-3-29 16-49 46-50-2 29-19 49-46 50Z" fill="currentColor" opacity=".25"/><path d="M46 115c14-23 28-35 52-53" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M76 86c-6-9-7-17-7-23M64 96c-8-2-16-4-22-10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
+  </div>
+  <div class="footer-grid footer-grid-new">
+   <div class="footer-about">
+    <a class="brand footer-brand" href="#" aria-label="ZdrowaDieta — wróć na początek"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#baff7d"/><path d="M9 27C7 14 20 8 31 9c0 13-10 25-22 18Z" fill="#146b3b"/><path d="M11 31 29 14" stroke="#e7ffce" stroke-width="2.4" stroke-linecap="round"/></svg>Zdrowa<span>Dieta</span></a>
+    <p>Jedz dobrze. Żyj prościej.<br>Pomysły, przepisy i praktyczne planowanie posiłków na co dzień.</p>
+    <span class="footer-trust"><span aria-hidden="true">🌿</span> Prosto, zdrowo, bez komplikacji</span>
+   </div>
+   <nav class="footer-column" aria-label="Na skróty">
+    <h3>Odkryj stronę</h3>
+    <a href="#jak-dziala">Jak to działa</a>
+    <a href="#w-srodku">Co znajdziesz w środku</a>
+    <a href="#oferta">E-book i cena</a>
+    <a href="#faq">Pytania i odpowiedzi</a>
+   </nav>
+   <div class="footer-column">
+    <h3>Kontakt</h3>
+    <p class="footer-team">Zespół ZdrowaDieta</p>
+    <a class="footer-email" href="mailto:zdrowadietashop@gmail.com">zdrowadietashop@gmail.com</a>
+    <p class="footer-contact-note">Masz pytanie dotyczące e-booka lub zakupu? Napisz do nas.</p>
+   </div>
+   <nav class="footer-column" aria-label="Dokumenty i informacje">
+    <h3>Informacje prawne</h3>
+    <a href="/regulamin.html">Regulamin</a>
+    <a href="/polityka-prywatnosci.html">Polityka prywatności</a>
+    <a href="/prawa-konsumenta.html">Prawa konsumenta</a>
+   </nav>
+  </div>
+  <div class="footer-bottom footer-bottom-new">
+   <small>© 2026 ZdrowaDieta. Wszelkie prawa zastrzeżone.</small>
+   <small>Produkt cyfrowy PDF · Sprzedaż i płatności przez Naffy</small>
+  </div>
+ </div>
+</footer>
 <div class="mobile-buy" id="mobile-buy" aria-label="Szybkie przejście do oferty"><div><b>Plan na 14 dni</b><small>E-book · 29,99 zł</small></div><a class="btn" href="#oferta">Zobacz ofertę →</a></div>
 <div class="cart-layer" id="cart-layer" hidden>
   <button type="button" class="cart-backdrop" id="cart-backdrop" aria-label="Zamknij koszyk"></button>
