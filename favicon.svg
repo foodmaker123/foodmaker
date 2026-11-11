@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <title>ZdrowaDieta</title>
+  <rect width="64" height="64" rx="16" fill="#063c25"/>
+  <path d="M16 44C14 25 29 12 49 13c-1 19-14 36-33 31Z" fill="#baff7d"/>
+  <path d="M14 49c9-16 20-23 31-29" fill="none" stroke="#063c25" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M28 30c-1 6-1 12 0 17M35 25c-5 1-10 2-14 1" fill="none" stroke="#063c25" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
