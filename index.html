@@ -15,6 +15,22 @@
 <footer class="footer"><div class="wrap foot-grid"><div><div class="brand">🌿 ZdrowaDieta</div><p>Praktyczny plan jedzenia dla zapracowanych.</p></div><div><strong>Informacje</strong><p>Sprzedawca: [uzupełnij]<br>Kontakt: [uzupełnij]</p></div><div><strong>Dokumenty</strong><p><a href="/regulamin.html">Regulamin sprzedaży (projekt)</a><br><a href="/polityka-prywatnosci.html">Polityka prywatności (projekt)</a><br><a href="/prawa-konsumenta.html">Prawa konsumenta (projekt)</a></p></div></div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite">Sprzedaż nie jest jeszcze aktywna. Link do płatności zostanie dodany przed publikacją. <button id="close" type="button">Zamknij</button></div>
 <script>
+// Usuwa z paska adresu parametry kampanii dodawane przez linki zewnętrzne,
+// bez przeładowania strony i bez usuwania kotwic takich jak #kup.
+(() => {
+  const url = new URL(window.location.href);
+  let changed = false;
+  for (const key of [...url.searchParams.keys()]) {
+    if (/^utm_/i.test(key)) {
+      url.searchParams.delete(key);
+      changed = true;
+    }
+  }
+  if (changed) {
+    window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
+  }
+})();
+
 // Wklej prawdziwy link do płatności Naffy/Easycart, aby aktywować zakup.
 // Pełny PDF umieść wyłącznie na platformie sprzedażowej, nie w repozytorium.
 const CHECKOUT_URL="";
