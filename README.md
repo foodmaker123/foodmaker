@@ -1,6 +1,6 @@
 # ZdrowaDieta — strona sprzedażowa e-booka
 
-Responsywny, statyczny landing page dla e-booka **„Zdrowa dieta dla zapracowanych” (wydanie drugie, 2026)**.
+Responsywny, statyczny landing page dla e-booka **„Zdrowa dieta dla zapracowanych”**.
 
 ## Publikacja
 
