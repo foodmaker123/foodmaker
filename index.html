@@ -307,6 +307,59 @@ body.cart-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce) and (max-width:800px){
  .mobile-buy,.mobile-buy.show{transition:none!important;transform:none!important}
 }
+
+/* Subtle responsive product-added flyout: independent of the full shopping cart */
+.mini-cart{
+ position:fixed;right:clamp(14px,2.4vw,36px);top:90px;z-index:80;
+ width:min(370px,calc(100vw - 28px));padding:20px;
+ border-radius:22px;background:#ffffff;color:#143b29;
+ border:1px solid #dce9d6;
+ box-shadow:0 24px 65px rgba(4,36,20,.20),0 3px 13px rgba(4,36,20,.06);
+ opacity:0;visibility:hidden;pointer-events:none;
+ transform:translate3d(18px,-12px,0) scale(.96);
+ transform-origin:top right;
+ transition:opacity .26s ease,transform .48s cubic-bezier(.18,1,.32,1),visibility 0s linear .48s;
+}
+.mini-cart.show{
+ opacity:1;visibility:visible;pointer-events:auto;
+ transform:translate3d(0,0,0) scale(1);
+ transition:opacity .28s ease,transform .5s cubic-bezier(.18,1,.32,1),visibility 0s;
+}
+.mini-cart-top{display:flex;align-items:center;gap:10px;position:relative;padding:0 26px 16px 0;border-bottom:1px solid #edf0e9}
+.mini-cart-success{display:grid;place-items:center;flex:0 0 35px;width:35px;height:35px;border-radius:12px;background:#def3d4;color:#197443}
+.mini-cart-success svg{width:19px;height:19px}
+.mini-cart-top-copy{display:grid;gap:2px;min-width:0}
+.mini-cart-top-copy strong{font-size:14px;line-height:1.25;font-weight:850;letter-spacing:-.015em}
+.mini-cart-top-copy small{font-size:11px;line-height:1.4;color:#6f8172}
+.mini-cart-close{position:absolute;top:-5px;right:-6px;display:grid;place-items:center;border:0;border-radius:10px;background:transparent;width:31px;height:31px;color:#6a7e70;transition:background .2s,color .2s}
+.mini-cart-close svg{width:18px;height:18px}
+.mini-cart-close:hover{background:#f0f5ed;color:#184b33}
+.mini-cart-product{display:grid;grid-template-columns:70px minmax(0,1fr);gap:15px;align-items:center;padding:16px 0}
+.mini-cart-cover{width:70px;aspect-ratio:420/590;border:1px solid #e2e8da;border-radius:10px;overflow:hidden;background:#eef4e8;box-shadow:0 6px 16px #103e221e}
+.mini-cart-cover img{display:block;width:100%;height:100%;object-fit:cover}
+.mini-cart-info{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+.mini-cart-type{font-size:10px;line-height:1.3;letter-spacing:.1em;color:#55826a;font-weight:850}
+.mini-cart-type span{margin:0 3px}
+.mini-cart-info b{font-size:14px;line-height:1.35;letter-spacing:-.024em;font-weight:850;color:#173a29}
+.mini-cart-price{font-size:17px;font-weight:900;letter-spacing:-.03em;color:#0b5733}
+.mini-cart-action{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;min-height:45px;padding:11px 16px;border:0;border-radius:13px;background:#baff91;color:#0e3f29;font-weight:850;font-size:13px;box-shadow:0 7px 20px #72b76030;transition:background .2s,transform .2s}
+.mini-cart-action:hover{background:#a5ee7c;transform:translateY(-1px)}
+.mini-cart-action:active{transform:scale(.99)}
+.mini-cart-action svg{width:17px;height:17px}
+.mini-cart-foot{display:flex;align-items:center;justify-content:center;gap:7px;padding-top:12px;font-size:10px;color:#6a856d;font-weight:700}
+.mini-cart-dot{height:6px;width:6px;border-radius:50%;background:#4cbb66}
+.mini-cart :is(button):focus-visible{outline:3px solid #2d9655;outline-offset:3px}
+@media(max-width:800px){
+ .mini-cart{top:calc(76px + env(safe-area-inset-top,0px));left:auto;right:12px;width:min(350px,calc(100vw - 24px));padding:17px;border-radius:20px;
+  transform:translate3d(0,-15px,0) scale(.97)}
+ .mini-cart-product{grid-template-columns:60px minmax(0,1fr);gap:13px;padding:13px 0}
+ .mini-cart-cover{width:60px}
+ .mini-cart-action{min-height:45px}
+}
+@media(max-width:360px){.mini-cart{padding:15px}.mini-cart-info b{font-size:13px}.mini-cart-top-copy small{font-size:10px}}
+@media(prefers-reduced-motion:reduce){
+ .mini-cart,.mini-cart.show,.mini-cart-close,.mini-cart-action{transition:none!important;transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -566,6 +619,33 @@ body.cart-open{overflow:hidden}
  </div>
 </footer>
 <div class="mobile-buy" id="mobile-buy" aria-label="Szybkie przejście do oferty" aria-hidden="true"><div><b>Plan na 14 dni</b><small>E-book · 29,99 zł</small></div><a class="btn" href="#oferta">Zobacz ofertę →</a></div>
+<aside class="mini-cart" id="mini-cart" aria-label="Podsumowanie dodanego produktu" aria-hidden="true">
+  <div class="mini-cart-top">
+    <span class="mini-cart-success" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4.5 4.5L19 7"/></svg>
+    </span>
+    <div class="mini-cart-top-copy">
+      <strong id="mini-cart-message" role="status" aria-live="polite">Dodano do koszyka</strong>
+      <small>Twój e-book jest gotowy do zamówienia</small>
+    </div>
+    <button type="button" class="mini-cart-close" id="mini-cart-close" aria-label="Zamknij powiadomienie o koszyku">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="mini-cart-product">
+    <div class="mini-cart-cover"><img src="/ebook-cover.svg" alt="" width="420" height="590" loading="lazy"></div>
+    <div class="mini-cart-info">
+      <span class="mini-cart-type">E-BOOK PDF <span aria-hidden="true">·</span> 1 SZT.</span>
+      <b>Zdrowa dieta dla zapracowanych</b>
+      <span class="mini-cart-price">29,99 zł</span>
+    </div>
+  </div>
+  <button type="button" class="mini-cart-action" id="mini-cart-view">
+    Zobacz koszyk
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-7-7 7 7-7 7"/></svg>
+  </button>
+  <div class="mini-cart-foot"><span class="mini-cart-dot"></span> Produkt dodany pomyślnie</div>
+</aside>
 <div class="cart-layer" id="cart-layer" hidden>
   <button type="button" class="cart-backdrop" id="cart-backdrop" aria-label="Zamknij koszyk"></button>
   <aside class="cart-panel" id="cart-dialog" role="dialog" aria-modal="true" aria-labelledby="cart-title" tabindex="-1">
@@ -669,6 +749,34 @@ body.cart-open{overflow:hidden}
  const counter=document.querySelectorAll("[data-cart-count]");
  let hasProduct=false;
  let previousFocus=null;
+ const miniCart=document.getElementById("mini-cart");
+ const miniCartClose=document.getElementById("mini-cart-close");
+ const miniCartView=document.getElementById("mini-cart-view");
+ const miniCartMessage=document.getElementById("mini-cart-message");
+ let miniCartTimer=null;
+ function hideMiniCart(){
+   clearTimeout(miniCartTimer);
+   miniCartTimer=null;
+   miniCart.classList.remove("show");
+   miniCart.setAttribute("aria-hidden","true");
+ }
+ function scheduleMiniCartClose(delay=8000){
+   clearTimeout(miniCartTimer);
+   miniCartTimer=setTimeout(hideMiniCart,delay);
+ }
+ function showMiniCart(alreadyAdded=false){
+   miniCartMessage.textContent=alreadyAdded?"Ten e-book jest już w koszyku":"Dodano do koszyka";
+   miniCart.classList.add("show");
+   miniCart.setAttribute("aria-hidden","false");
+   scheduleMiniCartClose();
+ }
+ miniCartClose.addEventListener("click",()=>{hideMiniCart();document.getElementById("add-to-cart").focus({preventScroll:true})});
+ miniCartView.addEventListener("click",()=>{hideMiniCart();openCart()});
+ miniCart.addEventListener("mouseenter",()=>clearTimeout(miniCartTimer));
+ miniCart.addEventListener("mouseleave",()=>scheduleMiniCartClose(4500));
+ miniCart.addEventListener("focusin",()=>clearTimeout(miniCartTimer));
+ miniCart.addEventListener("focusout",event=>{if(!miniCart.contains(event.relatedTarget))scheduleMiniCartClose(4500)});
+ document.addEventListener("keydown",event=>{if(event.key==="Escape"&&miniCart.classList.contains("show"))hideMiniCart()});
  function updateCart(){
    cartFilled.hidden=!hasProduct;
    cartEmpty.hidden=hasProduct;
@@ -676,6 +784,7 @@ body.cart-open{overflow:hidden}
    counter.forEach(el=>{el.textContent=hasProduct?"1":"0"});
  }
  function openCart(){
+   hideMiniCart();
    previousFocus=document.activeElement;
    layer.hidden=false;
    document.body.classList.add("cart-open");
@@ -690,8 +799,8 @@ body.cart-open{overflow:hidden}
    if(previousFocus&&typeof previousFocus.focus==="function")previousFocus.focus();
  }
  document.querySelectorAll("[data-open-cart]").forEach(el=>el.addEventListener("click",openCart));
- document.getElementById("add-to-cart").addEventListener("click",()=>{hasProduct=true;openCart()});
- document.getElementById("cart-remove").addEventListener("click",()=>{hasProduct=false;updateCart();document.getElementById("cart-browse").focus()});
+ document.getElementById("add-to-cart").addEventListener("click",event=>{const alreadyAdded=hasProduct;hasProduct=true;updateCart();showMiniCart(alreadyAdded);if(event.detail===0)miniCartView.focus({preventScroll:true})});
+ document.getElementById("cart-remove").addEventListener("click",()=>{hideMiniCart();hasProduct=false;updateCart();document.getElementById("cart-browse").focus()});
  document.getElementById("cart-close").addEventListener("click",closeCart);
  document.getElementById("cart-backdrop").addEventListener("click",closeCart);
  document.getElementById("cart-browse").addEventListener("click",()=>{closeCart();document.getElementById("oferta").scrollIntoView({behavior:reduced.matches?"instant":"smooth",block:"start"})});
