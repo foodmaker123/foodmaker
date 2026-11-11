@@ -9,7 +9,7 @@ Oficjalna strona e-booka **„Zdrowa dieta dla zapracowanych”**. Statyczny, re
 - Techniczny adres Pages: https://foodmaker-52h.pages.dev/
 - Repozytorium: `foodmaker123/foodmaker`, gałąź `main`
 - Wdrażanie: automatyczne z `main`, pod warunkiem aktywnego połączenia GitHub → Cloudflare Pages
-- Adres produktu Naffy: https://www.naffy.io/przemek-lampa/zdrowadieta-krx
+- Adres produktu Naffy: https://www.naffy.io/zdrowa-dieta/zdrowadieta-krx
 
 ## Pliki
 
