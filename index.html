@@ -360,6 +360,70 @@ body.cart-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){
  .mini-cart,.mini-cart.show,.mini-cart-close,.mini-cart-action{transition:none!important;transform:none!important}
 }
+
+/* Refined mobile navigation: smooth dropdown + staggered items + animated menu icon */
+@media(max-width:800px){
+ .nav-links{
+   display:flex;
+   opacity:0;
+   visibility:hidden;
+   pointer-events:none;
+   transform:translate3d(0,-12px,0) scale(.975);
+   transform-origin:top center;
+   border:1px solid rgba(186,255,125,.22);
+   background:linear-gradient(150deg,#073c28 0%,#062e20 100%);
+   box-shadow:0 20px 55px rgba(1,26,15,.30);
+   transition:opacity .26s ease,transform .43s cubic-bezier(.22,1,.36,1),visibility 0s linear .43s;
+   will-change:transform,opacity;
+ }
+ .nav-links.open{
+   display:flex;
+   opacity:1;
+   visibility:visible;
+   pointer-events:auto;
+   transform:translate3d(0,0,0) scale(1);
+   transition:opacity .29s ease,transform .46s cubic-bezier(.22,1,.36,1),visibility 0s;
+ }
+ .nav-links > a,.nav-links > button{
+   opacity:0;
+   transform:translate3d(0,-7px,0);
+   transition:opacity .22s ease,transform .38s cubic-bezier(.22,1,.36,1),background-color .2s ease;
+ }
+ .nav-links.open > a,.nav-links.open > button{
+   opacity:1;
+   transform:translate3d(0,0,0);
+ }
+ .nav-links.open > :nth-child(1){transition-delay:.045s}
+ .nav-links.open > :nth-child(2){transition-delay:.075s}
+ .nav-links.open > :nth-child(3){transition-delay:.105s}
+ .nav-links.open > :nth-child(4){transition-delay:.135s}
+ .nav-links.open > :nth-child(5){transition-delay:.165s}
+ .nav-links.open > :nth-child(6){transition-delay:.195s}
+ .nav-links > a:not(.btn){border-radius:10px;transition-property:opacity,transform,background-color,color}
+ .nav-links > a:not(.btn):hover{background-color:rgba(186,255,125,.08)}
+ .hamburger{
+   transition:background .24s ease,border-color .24s ease;
+ }
+ .hamburger[aria-expanded="true"]{
+   background:rgba(186,255,125,.13);
+   border-color:rgba(186,255,125,.5);
+ }
+ .hamburger svg path{
+   transition:transform .32s cubic-bezier(.22,1,.36,1),opacity .17s ease;
+ }
+ .hamburger .menu-icon-top{transform-origin:12px 7px}
+ .hamburger .menu-icon-middle{transform-origin:12px 12px}
+ .hamburger .menu-icon-bottom{transform-origin:12px 17px}
+ .hamburger[aria-expanded="true"] .menu-icon-top{transform:translateY(5px) rotate(45deg)}
+ .hamburger[aria-expanded="true"] .menu-icon-middle{opacity:0}
+ .hamburger[aria-expanded="true"] .menu-icon-bottom{transform:translateY(-5px) rotate(-45deg)}
+}
+@media(prefers-reduced-motion:reduce) and (max-width:800px){
+ .nav-links,.nav-links.open,.nav-links > a,.nav-links > button,.hamburger,.hamburger svg path{
+   transition:none!important;
+   will-change:auto;
+ }
+}
 </style>
 </head>
 <body>
@@ -368,7 +432,7 @@ body.cart-open{overflow:hidden}
 <header class="site-header">
  <nav class="container nav" aria-label="Nawigacja główna">
   <a class="brand" href="#" aria-label="ZdrowaDieta — strona główna"><svg viewBox="0 0 40 40" role="img" aria-label="Liść"><circle cx="20" cy="20" r="20" fill="#baff7d"/><path d="M9 27C7 14 20 8 31 9c0 13-10 25-22 18Z" fill="#146b3b"/><path d="M12 30 28 14" stroke="#e1ffce" stroke-width="2.6" stroke-linecap="round"/></svg>Zdrowa<span>Dieta</span></a>
-  <button class="hamburger" id="menu-btn" type="button" aria-controls="menu" aria-expanded="false" aria-label="Otwórz menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg> Menu</button>
+  <button class="hamburger" id="menu-btn" type="button" aria-controls="menu" aria-expanded="false" aria-label="Otwórz menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path class="menu-icon-top" d="M4 7h16"/><path class="menu-icon-middle" d="M4 12h16"/><path class="menu-icon-bottom" d="M4 17h16"/></svg> Menu</button>
   <div class="nav-links" id="menu">
    <a href="#jak-dziala">Jak to działa</a><a href="#w-srodku">Co w środku</a><a href="#przepisy">Posiłki</a><a href="#faq">FAQ</a>
    <button type="button" class="cart-trigger" data-open-cart aria-haspopup="dialog" aria-controls="cart-dialog" aria-label="Otwórz koszyk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="14" rx="2"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg> Koszyk <span class="cart-count" data-cart-count>0</span></button>
@@ -701,10 +765,20 @@ body.cart-open{overflow:hidden}
  const url=new URL(location.href); let changed=false;for(const key of [...url.searchParams.keys()]){if(/^utm_/i.test(key)){url.searchParams.delete(key);changed=true}}if(changed)history.replaceState(history.state,"",url.pathname+url.search+url.hash);
  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)");
  const nav=document.getElementById("menu");const menuBtn=document.getElementById("menu-btn");
- const closeMenu=()=>{nav.classList.remove("open");menuBtn.setAttribute("aria-expanded","false");menuBtn.setAttribute("aria-label","Otwórz menu")};
- menuBtn.addEventListener("click",()=>{const open=nav.classList.toggle("open");menuBtn.setAttribute("aria-expanded",String(open));menuBtn.setAttribute("aria-label",open?"Zamknij menu":"Otwórz menu")});
- document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
- document.addEventListener("click",e=>{if(!nav.contains(e.target)&&!menuBtn.contains(e.target))closeMenu()});
+ const mobileMenuQuery=window.matchMedia("(max-width: 800px)");
+ function syncMenuState(){
+   const mobile=mobileMenuQuery.matches;
+   const open=mobile&&nav.classList.contains("open");
+   nav.inert=mobile&&!open;
+   nav.setAttribute("aria-hidden",String(mobile&&!open));
+   menuBtn.setAttribute("aria-expanded",String(open));
+   menuBtn.setAttribute("aria-label",open?"Zamknij menu":"Otwórz menu");
+ }
+ const closeMenu=()=>{nav.classList.remove("open");syncMenuState()};
+ menuBtn.addEventListener("click",()=>{nav.classList.toggle("open");syncMenuState()});
+ syncMenuState();
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&nav.classList.contains("open")){closeMenu();menuBtn.focus()}});
+ document.addEventListener("click",e=>{if(nav.classList.contains("open")&&!nav.contains(e.target)&&!menuBtn.contains(e.target))closeMenu()});
  const top=document.querySelector(".site-header");let scrollAnim=0;
  function scrollToTarget(hash,update=true){const el=hash==="#"?document.body:document.getElementById(decodeURIComponent(hash.slice(1)));if(!el)return false;
  cancelAnimationFrame(scrollAnim);const offset=hash==="#"?0:top.getBoundingClientRect().height+18;const start=window.scrollY;const end=Math.max(0,start+el.getBoundingClientRect().top-offset);
@@ -760,7 +834,7 @@ body.cart-open{overflow:hidden}
    miniCart.classList.remove("show");
    miniCart.setAttribute("aria-hidden","true");
  }
- function scheduleMiniCartClose(delay=8000){
+ function scheduleMiniCartClose(delay=4000){
    clearTimeout(miniCartTimer);
    miniCartTimer=setTimeout(hideMiniCart,delay);
  }
@@ -773,9 +847,9 @@ body.cart-open{overflow:hidden}
  miniCartClose.addEventListener("click",()=>{hideMiniCart();document.getElementById("add-to-cart").focus({preventScroll:true})});
  miniCartView.addEventListener("click",()=>{hideMiniCart();openCart()});
  miniCart.addEventListener("mouseenter",()=>clearTimeout(miniCartTimer));
- miniCart.addEventListener("mouseleave",()=>scheduleMiniCartClose(4500));
+ miniCart.addEventListener("mouseleave",()=>scheduleMiniCartClose(4000));
  miniCart.addEventListener("focusin",()=>clearTimeout(miniCartTimer));
- miniCart.addEventListener("focusout",event=>{if(!miniCart.contains(event.relatedTarget))scheduleMiniCartClose(4500)});
+ miniCart.addEventListener("focusout",event=>{if(!miniCart.contains(event.relatedTarget))scheduleMiniCartClose(4000)});
  document.addEventListener("keydown",event=>{if(event.key==="Escape"&&miniCart.classList.contains("show"))hideMiniCart()});
  function updateCart(){
    cartFilled.hidden=!hasProduct;
