@@ -13,7 +13,9 @@ Oficjalna strona e-booka **„Zdrowa dieta dla zapracowanych”**. Statyczny, re
 
 ## Pliki
 
-- `index.html` — strona ofertowa, cena, FAQ, lokalny koszyk i odnośniki do płatności Naffy
+- `index.html` — struktura strony ofertowej, prawdziwe fragmenty treści PDF, cena, FAQ i linki do płatności Naffy
+- `assets/site.css` — wszystkie style responsywne oraz animacje
+- `assets/site.js` — nawigacja mobilna, przełączanie podglądu e-booka, wysuwany koszyk i małe powiadomienie po dodaniu produktu
 - `ebook-cover.svg` — ilustracja okładki na stronie; nie zastępuje sprzedawanego pliku PDF
 - `favicon.svg` — ikona strony
 - `regulamin.html` — regulamin sprzedaży e-booka
@@ -52,3 +54,11 @@ Wszystkie powyższe kroki poza konfiguracją konta Naffy zostały zaobserwowane 
 Otwórz `index.html` w przeglądarce. Fotografie z Unsplash wymagają dostępu do internetu.
 
 *Ostatni przegląd repozytorium: 12 listopada 2026 r.*
+
+## Kopia bezpieczeństwa — 12 listopada 2026
+
+Przed modernizacją utworzono **pełną gałąź zapasową** `backup/zdrowadieta-before-refresh-2026-11-12`. Pozostała ona niezmieniona i zawiera kod oraz wszystkie pliki strony w stanie sprzed ostatnich zmian. Aby przywrócić poprzedni wygląd, można przywrócić odpowiednie pliki lub commit z tej gałęzi na `main`.
+
+W modernizacji: ujednolicono ikonografię; rozbudowano prezentację o faktyczne fragmenty treści finalnego 48-stronicowego PDF-a (strony 3, 10, 11 i 23) przedstawione w układzie HTML; dodano opis metodyki, kroki zakupu, dane strukturalne produktu oraz podstawowy podgląd linków w mediach społecznościowych. Zdjęcia pozostają ilustracyjne. Nie publikowano płatnego pliku PDF.
+
+**Do dalszej konfiguracji (poza kodem):** włączenie analityki (np. Cloudflare Web Analytics), sprawdzenie obrazu podglądu linku na platformach społecznościowych, test płatności i potwierdzeń zgód w Naffy oraz testy wizualne na fizycznych urządzeniach.
