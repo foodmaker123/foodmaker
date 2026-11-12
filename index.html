@@ -424,6 +424,57 @@ body.cart-open{overflow:hidden}
    will-change:auto;
  }
 }
+
+/* Koszyk: elegancki, animowany panel na desktopie i wysuwany arkusz na telefonie. */
+.cart-layer{pointer-events:none}
+.cart-layer .cart-backdrop{
+ opacity:0;
+ -webkit-backdrop-filter:blur(0);
+ backdrop-filter:blur(0);
+ transition:opacity .36s ease,-webkit-backdrop-filter .36s ease,backdrop-filter .36s ease;
+}
+.cart-layer .cart-panel{
+ border-radius:24px 0 0 24px;
+ transform:translate3d(105%,0,0);
+ opacity:.985;
+ transition:transform .48s cubic-bezier(.22,1,.36,1),opacity .32s ease;
+ will-change:transform;
+}
+.cart-layer.is-open{pointer-events:auto}
+.cart-layer.is-open .cart-backdrop{
+ opacity:1;
+ -webkit-backdrop-filter:blur(3px);
+ backdrop-filter:blur(3px);
+}
+.cart-layer.is-open .cart-panel{transform:translate3d(0,0,0);opacity:1}
+.cart-layer .cart-heading,.cart-layer .cart-stepper,.cart-layer .cart-items,.cart-layer .cart-summary{
+ opacity:0;transform:translate3d(0,9px,0);
+ transition:opacity .24s ease,transform .4s cubic-bezier(.22,1,.36,1);
+}
+.cart-layer.is-open .cart-heading,.cart-layer.is-open .cart-stepper,.cart-layer.is-open .cart-items,.cart-layer.is-open .cart-summary{
+ opacity:1;transform:translate3d(0,0,0);
+}
+.cart-layer.is-open .cart-heading{transition-delay:.08s}
+.cart-layer.is-open .cart-stepper{transition-delay:.12s}
+.cart-layer.is-open .cart-items{transition-delay:.15s}
+.cart-layer.is-open .cart-summary{transition-delay:.18s}
+@media(max-width:800px){
+ .cart-layer{align-items:flex-end}
+ .cart-layer .cart-panel{
+   width:100%;height:calc(100% - 16px);
+   border-radius:24px 24px 0 0;
+   transform:translate3d(0,105%,0);
+   box-shadow:0 -22px 60px #00180e52;
+ }
+ .cart-layer.is-open .cart-panel{transform:translate3d(0,0,0)}
+ .cart-layer .cart-heading{border-radius:24px 24px 0 0}
+}
+@media(prefers-reduced-motion:reduce){
+ .cart-layer .cart-backdrop,.cart-layer .cart-panel,
+ .cart-layer .cart-heading,.cart-layer .cart-stepper,.cart-layer .cart-items,.cart-layer .cart-summary{
+   transition:none!important;transform:none!important;will-change:auto;
+ }
+}
 </style>
 </head>
 <body>
@@ -857,20 +908,41 @@ body.cart-open{overflow:hidden}
    cartSummary.hidden=!hasProduct;
    counter.forEach(el=>{el.textContent=hasProduct?"1":"0"});
  }
+ let cartCloseTimer=null;
+ function finishCartClose(){
+   if(layer.classList.contains("is-open"))return;
+   clearTimeout(cartCloseTimer);
+   cartCloseTimer=null;
+   layer.hidden=true;
+   document.body.classList.remove("cart-open");
+   updateBar();
+   if(previousFocus&&previousFocus.isConnected&&typeof previousFocus.focus==="function")previousFocus.focus({preventScroll:true});
+   previousFocus=null;
+ }
+ dialog.addEventListener("transitionend",event=>{
+   if(event.target===dialog&&event.propertyName==="transform"&&!layer.classList.contains("is-open"))finishCartClose();
+ });
  function openCart(){
    hideMiniCart();
-   previousFocus=document.activeElement;
+   if(layer.classList.contains("is-open"))return;
+   clearTimeout(cartCloseTimer);
+   cartCloseTimer=null;
+   previousFocus=previousFocus||(miniCart.contains(document.activeElement)?document.getElementById("add-to-cart"):nav.contains(document.activeElement)?menuBtn:document.activeElement);
+   closeMenu();
    layer.hidden=false;
    document.body.classList.add("cart-open");
    updateBar();
    updateCart();
-   document.getElementById("cart-close").focus();
+   // Wywołaj przeliczenie stylów, aby animacja działała także przy pierwszym otwarciu.
+   void dialog.offsetWidth;
+   layer.classList.add("is-open");
+   document.getElementById("cart-close").focus({preventScroll:true});
  }
  function closeCart(){
-   layer.hidden=true;
-   document.body.classList.remove("cart-open");
-   updateBar();
-   if(previousFocus&&typeof previousFocus.focus==="function")previousFocus.focus();
+   if(layer.hidden||!layer.classList.contains("is-open"))return;
+   layer.classList.remove("is-open");
+   if(reduced.matches){finishCartClose();return}
+   cartCloseTimer=setTimeout(finishCartClose,530);
  }
  document.querySelectorAll("[data-open-cart]").forEach(el=>el.addEventListener("click",openCart));
  document.getElementById("add-to-cart").addEventListener("click",event=>{const alreadyAdded=hasProduct;hasProduct=true;updateCart();showMiniCart(alreadyAdded);if(event.detail===0)miniCartView.focus({preventScroll:true})});
